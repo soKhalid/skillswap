@@ -2,10 +2,13 @@
   "rules": {
     "chats": {
       "$chatId": {
-        ".read": "auth != null && (data.child('metadata/participants').val().contains(auth.uid) || !data.exists())",
-        ".write": "auth != null && (data.child('metadata/participants').val().contains(auth.uid) || !data.exists())",
+        ".read": "auth != null",
+        ".write": "auth != null",
         "messages": {
           ".indexOn": ["timestamp"]
+        },
+        "metadata": {
+          ".indexOn": ["lastMessageTime"]
         }
       }
     }
