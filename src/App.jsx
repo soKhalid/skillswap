@@ -18,6 +18,7 @@ import TeacherProfile from './pages/TeacherProfile';
 import Dashboard from './pages/Dashboard';
 import MySessions from './pages/MySessions';
 import Messages from './pages/Messages';
+import Notifications from './pages/Notifications';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
 
@@ -82,6 +83,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Messages />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/notifications"
+                element={
+                  <ProtectedRoute>
+                    <Notifications />
                   </ProtectedRoute>
                 }
               />

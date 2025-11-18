@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to={currentUser ? "/dashboard" : "/"} className="flex items-center space-x-2">
             <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
               SkillSwap
             </span>
@@ -54,10 +54,10 @@ const Navbar = () => {
                 </div>
 
                 {/* Notifications */}
-                <button className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+                <Link to="/notifications" className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
                   <FiBell size={20} />
                   <span className="absolute top-1 right-1 w-2 h-2 bg-accent-500 rounded-full"></span>
-                </button>
+                </Link>
 
                 {/* Profile Menu */}
                 <div className="relative">

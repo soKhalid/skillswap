@@ -28,9 +28,11 @@ const Discover = () => {
       const usersSnapshot = await getDocs(usersCollection);
       const usersData = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-      // Filter users who have skills to teach
+      // Filter users who have skills to teach and exclude current user
       const teachingUsers = usersData.filter(user =>
-        user.skillsOffered && user.skillsOffered.length > 0
+        user.skillsOffered &&
+        user.skillsOffered.length > 0 &&
+        user.uid !== currentUser.uid  // Can't teach yourself!
       );
 
       setUsers(teachingUsers);
@@ -157,7 +159,11 @@ const Discover = () => {
 
       {/* Results Count */}
       <div className="mb-4 text-gray-600 dark:text-gray-400">
-        Found {filteredUsers.length} {filteredUsers.length === 1 ? 'teacher' : 'teachers'}
+        Found {filteredUsers.length} {
+          viewMode === 'teach'
+            ? (filteredUsers.length === 1 ? 'teacher' : 'teachers')
+            : (filteredUsers.length === 1 ? 'seeker' : 'seekers')
+        }
       </div>
 
       {/* User Cards Grid */}
