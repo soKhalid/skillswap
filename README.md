@@ -45,7 +45,7 @@ A modern peer-to-peer learning platform where students exchange skills instead o
 - **Icons**: React Icons
 - **Date Picker**: React DatePicker
 - **Video Calls**: Jitsi Meet (embedded)
-- **Deployment**: Vercel
+- **Deployment**: Firebase Hosting
 
 ## Project Structure
 
@@ -83,10 +83,12 @@ skillswap/
 │   ├── index.css
 │   └── main.jsx
 ├── .env.example
+├── .firebaserc
+├── firebase.json
 ├── firestore.rules
+├── firestore.indexes.json
 ├── database.rules.json
 ├── storage.rules
-├── vercel.json
 └── package.json
 ```
 
@@ -195,38 +197,87 @@ The app will be available at `http://localhost:5173`
 npm run build
 ```
 
-## Deployment to Vercel
+## Deployment to Firebase Hosting
 
-### Option 1: Vercel CLI
+Firebase Hosting is perfect for SkillSwap since everything (backend + hosting) is in one place!
 
-1. Install Vercel CLI:
+### Prerequisites
+
+1. Firebase CLI installed (already done if you ran setup)
+2. Your Firebase project configured (`skillswap-19321`)
+3. All Firebase services enabled (Authentication, Firestore, Realtime DB, Storage)
+
+### Deploy Steps
+
+1. **Login to Firebase**:
 ```bash
-npm i -g vercel
+firebase login
 ```
 
-2. Login to Vercel:
+2. **Deploy Security Rules** (one-time setup):
 ```bash
-vercel login
+# Deploy Firestore rules
+firebase deploy --only firestore:rules
+
+# Deploy Realtime Database rules
+firebase deploy --only database
+
+# Deploy Storage rules
+firebase deploy --only storage
 ```
 
-3. Deploy:
+3. **Build your app**:
 ```bash
-vercel
+npm run build
 ```
 
-4. Add environment variables in Vercel dashboard:
-   - Go to your project settings
-   - Navigate to Environment Variables
-   - Add all `VITE_*` variables from your `.env` file
+4. **Deploy to Firebase Hosting**:
+```bash
+firebase deploy --only hosting
+```
 
-### Option 2: GitHub Integration
+5. **Your app is live!**
+   - Firebase will provide a URL like: `https://skillswap-19321.web.app`
+   - Or your custom domain if configured
 
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Click "New Project"
-4. Import your GitHub repository
-5. Add environment variables
-6. Deploy
+### Quick Deploy (All at Once)
+
+Deploy everything (hosting + all rules):
+```bash
+npm run build && firebase deploy
+```
+
+### Update Deployment
+
+To update your live app after making changes:
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+### View Your Live App
+
+```bash
+firebase hosting:channel:deploy preview  # Preview channel
+firebase open hosting:site               # Open in browser
+```
+
+### Custom Domain (Optional)
+
+1. Go to Firebase Console → Hosting
+2. Click "Add custom domain"
+3. Follow the instructions to verify and connect your domain
+
+### Environment Variables
+
+Firebase Hosting automatically uses the `.env` variables during build. Your credentials are already configured in `.env` (not committed to Git).
+
+For production-specific variables, create `.env.production`:
+```env
+# Same as .env but for production
+VITE_FIREBASE_API_KEY=your_key_here
+# ... other variables
+```
 
 ## Demo Credentials
 
