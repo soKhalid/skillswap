@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { FiSun, FiMoon, FiMenu, FiX, FiBell, FiUser, FiLogOut } from 'react-icons/fi';
+import logo from '../../1.png';
 
 const Navbar = () => {
   const { currentUser, userProfile, logout } = useAuth();
@@ -22,7 +23,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to={currentUser ? "/dashboard" : "/"} className="flex items-center space-x-2">
+          <Link to={currentUser ? "/dashboard" : "/"} className="flex items-center space-x-3">
+            <img src={logo} alt="SkillSwap" className="h-10 w-10 object-contain" />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
               SkillSwap
             </span>
@@ -104,6 +106,9 @@ const Navbar = () => {
                 <Link to="/about" className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   About
                 </Link>
+                <Link to="/pricing" className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  Pricing
+                </Link>
                 <Link to="/login" className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   Login
                 </Link>
@@ -167,6 +172,9 @@ const Navbar = () => {
               <div className="flex flex-col space-y-3">
                 <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 dark:text-gray-200">
                   About
+                </Link>
+                <Link to="/pricing" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 dark:text-gray-200">
+                  Pricing
                 </Link>
                 <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 dark:text-gray-200">
                   Login

@@ -117,15 +117,6 @@ const Login = () => {
             </Link>
           </p>
         </div>
-
-        {/* Demo Credentials */}
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-          <p className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">Demo Credentials:</p>
-          <p className="text-xs text-blue-800 dark:text-blue-200">
-            Email: demo@skillswap.com<br />
-            Password: demo123456
-          </p>
-        </div>
       </div>
     </div>
   );

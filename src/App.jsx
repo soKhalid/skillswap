@@ -19,6 +19,7 @@ import Dashboard from './pages/Dashboard';
 import MySessions from './pages/MySessions';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
+import Pricing from './pages/Pricing';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
 
@@ -34,6 +35,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/pricing" element={<Pricing />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
 
