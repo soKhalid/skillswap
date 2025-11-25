@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to={currentUser ? "/dashboard" : "/"} className="flex items-center space-x-3">
-            <img src={logo} alt="SkillSwap" className="h-14 w-14 object-contain" />
+            <img src={logo} alt="SkillSwap" className="h-20 w-20 object-contain" />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
               SkillSwap
             </span>
