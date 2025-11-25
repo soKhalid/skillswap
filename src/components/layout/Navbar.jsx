@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
-import { FiSun, FiMoon, FiMenu, FiX, FiBell, FiUser, FiLogOut } from 'react-icons/fi';
+import { FiSun, FiMoon, FiMenu, FiX, FiBell, FiUser, FiLogOut, FiDollarSign } from 'react-icons/fi';
 import logo from '../../1.png';
 
 const Navbar = () => {
@@ -54,6 +54,12 @@ const Navbar = () => {
                   </span>
                   <span className="text-accent-500 dark:text-accent-400 text-sm">SP</span>
                 </div>
+
+                {/* Pricing Button */}
+                <Link to="/pricing" className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-full font-semibold hover:from-yellow-500 hover:to-yellow-700 transition-all shadow-md hover:shadow-lg">
+                  <FiDollarSign size={16} />
+                  <span className="text-sm">Pricing</span>
+                </Link>
 
                 {/* Notifications */}
                 <Link to="/notifications" className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
@@ -160,6 +166,9 @@ const Navbar = () => {
                 </Link>
                 <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 dark:text-gray-200">
                   Dashboard
+                </Link>
+                <Link to="/pricing" onClick={() => setMobileMenuOpen(false)} className="text-yellow-600 dark:text-yellow-400 font-semibold">
+                  💰 Pricing Plans
                 </Link>
                 <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 dark:text-gray-200">
                   My Profile
